@@ -1,0 +1,22 @@
+<% if @errors %>
+  <h4> Your event submission has errors: </h4>
+  <ul>
+    <% @errors.each do |field, error| %>
+      <li>
+        <%= field %>: <%= error[0] %>
+      </li>
+    <% end %>
+  </ul> 
+<%end%>
+
+<form action="/events/create" method="post">
+  <p>Organizer Name:</p>
+  <input type="text" name="event[organizer_name]" <%= "value='#{@fields[:organizer_name]}'" if @fields %>>
+  <p>Organizer Email:</p>
+  <input type="text" name="event[organizer_email]" <%= "value='#{@fields[:organizer_email]}'" if @fields %>>
+  <p>Event title:</p>
+  <input type="text" name="event[title]" <%= "value='#{@fields[:title]}'" if @fields %>>
+  <p>Event date:</p>
+  <input type="text" name="event[date]" <%= "value='#{@fields[:date]}'" if @fields %>>
+  <input type="submit" value="Submit">
+</form>
