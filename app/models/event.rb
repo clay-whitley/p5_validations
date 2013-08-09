@@ -5,7 +5,6 @@ class Event < ActiveRecord::Base
   validate :date_checker
 
   def date_checker
-    p self.date
     if self.date.nil?
       errors.add(:date, "invalid date, use format: yyyy/mm/dd")
     elsif self.date < Date::today

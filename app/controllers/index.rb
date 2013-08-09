@@ -14,12 +14,9 @@ end
 
 post '/events/create' do
   event = Event.create(params[:event])
-  p event.date.class
   if event.errors.messages.any?
-    p event.errors.messages
     @errors = event.errors.messages
     @fields = params[:event]
-    p @fields
     erb :new_event
   else
     redirect '/'
